@@ -123,7 +123,7 @@ Use 3 different data structures for the data. std::forward_list, std::vector, an
 
 This is a total of 6 combinations of calculations but you can only enter the data once into your program as a std::array. 
 
-Report the distances in alphabetical order of the destination Island Name and sum the total distance travelled. 
+Report the distances in order of the destination Island Name distance and sum the total distance travelled for that route. 
 
 ## For those students wishing an extra challenge:
 
