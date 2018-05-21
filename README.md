@@ -49,6 +49,6 @@ For those students wishing an extra challenge:
 
 Measure the time each calculation takes to determine which data structure and algorithm does the calculation the fastest. 
 
-The two students with fastest accurate calculations that fully met the specification will be placed into a race on my computer. The student with the fastest calculation will recieve an SRS forgiveness (and a Smartie). 
+The two students with fastest accurate calculations that fully met the specification will be placed into a race on my computer. The student with the fastest release version calculation will recieve an SRS forgiveness (and a Smartie). 
 
 You are allowed to do any calculations at compile time you wish but you may not hand calculate anything. 
