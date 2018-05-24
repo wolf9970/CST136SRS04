@@ -1,6 +1,8 @@
 # CST136SRS04
 Island Hopping
 
+Project Name: Atoll
+
 Purpose:
 
 - Learn to use the C++ standard library algorithms
@@ -31,23 +33,24 @@ Below is a navigation chart you are to use. Each entry contains an island and it
 | Wake Island      |      19 |      17 |      43 |   N |     166 |      37 |      52 |   E |
 | New Zealand      |      41 |      17 |       0 |   S |     174 |      27 |       0 |   E |
 
-Use the following code outline to get yourself started:
+Use standard organization for your code. Templates and declarations  in .h files, C++ implementations in .cpp files. File names are lower case with the same name as the class. Place your GPS related classes in a GPS namespace.
 
+Use the following code to get yourself started. This code is not complete, it is only a rough outline of what I'm looking to see. 
 ```
+template<typename T, T min, T max>
+class Range // You should re-code and simplify your SRS01 RangeInt
+{
+private:
+	using value_type = T;
+
+	value_type value_;
+
+public:
+	Range(const value_type value);
+};
+
 namespace GPS
 {
-	template<typename T, T min, T max>
-	class Range
-	{
-	private:
-		using value_type = T;
-
-		value_type value_;
-
-	public:
-		Range(const value_type value);
-	};
-
 	template<int min, int max>
 	class Angle
 	{
@@ -71,7 +74,10 @@ namespace GPS
 	public:
 		Angle(const degree_type degree, const minute_type minute, const second_type second);
 	};
+}
 
+namespace GPS
+{
 	class Latitude: public Angle<-89, 90>
 	{
 	public:
@@ -79,7 +85,10 @@ namespace GPS
 
 		Latitude(const Cardinal cardinal, const degree_type degree, const minute_type minute, const second_type second);
 	};
+}
 
+namespace GPS
+{
 	class Longitude : public Angle<-180, 180>
 	{
 	public:
@@ -87,7 +96,10 @@ namespace GPS
 
 		Longitude(const Cardinal cardinal, const degree_type degree, const minute_type minute, const second_type second);
 	};
+}
 
+namespace GPS
+{
 	class Location
 	{
 	private:
@@ -107,30 +119,32 @@ Initialize a std::array using the above table:
 	std::array<GPS::Location, 12> island
 	{
 		GPS::Location{ "Faichuk Islands"s, GPS::Latitude{ GPS::Latitude::Cardinal::N, 7, 21, 8 }, GPS::Longitude{ GPS::Longitude::Cardinal::E, 151, 36, 30 } } 
-    /// ...
+    /// ... In order as shown in the above table....
 	};
 ```
 
 Calculate the distance travelled as you hop from island to island. 
 
-Each hop will take a [Great Circle](https://en.wikipedia.org/wiki/Great-circle_distance) and can be approximated using the [Haversine Formula](https://en.wikipedia.org/wiki/Haversine_formula) to calculate the Kilometers between the islands. Assume the Earth's radius is: 6378km. 
+For each hop, follow a [Great Circle](https://en.wikipedia.org/wiki/Great-circle_distance). Approximated using the [Haversine Formula](https://en.wikipedia.org/wiki/Haversine_formula) to calculate the Kilometers between the islands. Assume the Earth's radius is: 6378_km. 
 
 You must take 2 routes. The first is to travel from South to North, in order. The second is to travel from West to East in order. 
 
-Report the distance travelled between each pair of locations in their order from South to North, or West to East. 
+Report the distance travelled between each pair of locations in their order. South to North and West to East. 
 
-Use 3 different data structures for the data. std::forward_list, std::vector, and std::map. 
+Use 3 different data structures for the data to solve the distances. std::forward_list, std::vector, and std::map. 
 
 This is a total of 6 combinations of calculations but you can only enter the data once into your program as a std::array. 
 
-Report the distances in order of the destination Island Name distance and sum the total distance travelled for that route. 
+Report the distances in order of the destination Island Name distance and sum the total distance travelled for that route. Do NOT sum the distances by looping, you must use an algorithm. 
 
 ## For those students wishing an extra challenge:
 
-This is only available to students who accurately complete all aspects of this assignment on time. 
+This is only available to students who accurately complete all aspects of this assignment on time and want to do extra work. 
 
-Measure the time each calculation takes to determine which data structure and algorithm does the calculation the fastest. 
+Measure the time each calculation takes to determine which data structure and algorithm does the sorting and summation calculation the fastest. 
 
-The student with fastest release version with an accurate calculations that fully meets the specification. The winner will recieve an SRS forgiveness (and a Smartie). 
+The student with fastest release version with an accurate calculations that fully meets the specification win. The winner will recieve an SRS forgiveness (and a Smartie). 
 
 You are allowed to do any calculations at compile time you wish but you may not hand calculate anything. 
+
+Turn this in as a second SRS by copying your original SRS and modifying it. 
