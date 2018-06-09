@@ -1,0 +1,3 @@
+#include "location.h"
+
+double haversine(const GPS::Location& l1, const GPS::Location& l2);

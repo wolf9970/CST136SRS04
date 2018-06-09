@@ -1,0 +1,26 @@
+#ifndef RANGE_H
+#define RANGE_H
+
+#include <assert.h>
+
+template <typename T, T min, T max>
+class Range
+{
+private:
+  using value_type = T;
+  value_type value_;
+
+public:
+  Range(const value_type value)
+  {
+    assert(value >= min && value < max);
+    value_ = value;
+  }
+
+  double getValue() const
+  {
+    return value_;
+  }
+};
+
+#endif
